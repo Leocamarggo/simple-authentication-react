@@ -4,3 +4,8 @@ export interface IAuthContext {
   user: string | null;
   Login(user: object): Promise<void>;
 }
+
+export interface IUserData {
+  email: string
+  password: string
+}

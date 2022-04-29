@@ -1,5 +1,5 @@
 import {api} from '../services/api';
-import { IAuthContext } from '../interface/auth';
+import { IAuthContext, IUserData } from '../interface/auth';
 import { ChildrenPropsType } from '../interface/children';
 import { createContext, useState, useEffect, useContext } from 'react';
  
@@ -14,9 +14,10 @@ export const AuthProvider = ({ children }: ChildrenPropsType) => {
     storagedToken && setUser(JSON.parse(storagedToken));
   }, []);
   
-  async function Login(userData: object) {
+  async function Login(userData: IUserData) {
     try {
       const response = await api.post('/login', userData);
+      
       setUser(JSON.stringify(response.data.token));
       localStorage.setItem('@App:token', JSON.stringify(response.data.token));
     } catch (error){
