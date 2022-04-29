@@ -2,6 +2,7 @@ import {api} from '../services/api';
 import { IAuthContext, IUserData } from '../interface/auth';
 import { ChildrenPropsType } from '../interface/children';
 import { createContext, useState, useEffect, useContext } from 'react';
+import { eraseCookie, getCookie, setCookie } from '../utils/functionsCookies';
  
 const AuthContext = createContext<IAuthContext>({} as IAuthContext);
 
@@ -9,7 +10,7 @@ export const AuthProvider = ({ children }: ChildrenPropsType) => {
   const [user, setUser] = useState<string | null>(null);
 
   useEffect(() => {
-    const storagedToken = localStorage.getItem('@App:token');
+    const storagedToken = getCookie('@App:token')
 
     storagedToken && setUser(storagedToken);
   }, []);
@@ -19,7 +20,7 @@ export const AuthProvider = ({ children }: ChildrenPropsType) => {
       const response = await api.post('/Login', userData);
 
       setUser(response.data.token);
-      localStorage.setItem('@App:token', response.data.token);
+      setCookie('@App:token', response.data.token, 7)
     } catch (error){
       setUser(null);
     }
@@ -27,7 +28,7 @@ export const AuthProvider = ({ children }: ChildrenPropsType) => {
 
   async function logout() {
     setUser(null);
-    localStorage.removeItem('@App:token');
+    eraseCookie('@App:token')
   }
 
   return (
