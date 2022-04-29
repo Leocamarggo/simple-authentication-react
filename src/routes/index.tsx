@@ -1,12 +1,22 @@
-import { useContext } from 'react';
-import AuthContext from '../contexts/auth';
-
-import PublicRoutes from './publicRoutes';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from '../pages/home';
+import Login from '../pages/login';
 import PrivateRoutes from './privateRoutes';
 
-const Routes = () => {
-  const { signed } = useContext(AuthContext);
-  return signed ? <PrivateRoutes /> : <PublicRoutes />;
-};
+const Routers = () => (
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route 
+        path="/home" 
+        element={
+          <PrivateRoutes>
+            <Home />
+          </PrivateRoutes>
+        } 
+      />
+    </Routes>
+  </BrowserRouter>
+);
 
-export default Routes;
+export default Routers;

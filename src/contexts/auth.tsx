@@ -1,5 +1,5 @@
 import {api} from '../services/api';
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect, useContext } from 'react';
 
 
 type AuthPropsType = {
@@ -9,7 +9,7 @@ interface AuthContextData {
   Logout(): void;
   signed: boolean;
   user: object | null;
-  Login(): Promise<void>;
+  Login(user: object): Promise<void>;
  }
  
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -22,19 +22,16 @@ export const AuthProvider = ({ children }: AuthPropsType) => {
     const storagedToken = localStorage.getItem('@App:token');
 
     if (storagedToken && storagedUser) {
-      setUser(JSON.parse(storagedUser));
+      setUser({teste: storagedUser});
       api.defaults.headers.common['Authorization'] = `Bearer ${storagedToken}`;
     }
   }, []);
   
-  async function Login() {
-    const response = await api.post('/login', {
-      email: "eve.holt@reqres.in",
-      password: 'cityslicka',
-    });
-    setUser(response.data.id);
+  async function Login(userData: object) {
+    const response = await api.post('/login', userData);
+    setUser({teste: response.data.id});
 
-    localStorage.setItem('@App:user', JSON.stringify(response.data.id));
+    localStorage.setItem('@App:user', response.data.token);
     localStorage.setItem('@App:token', response.data.token);
   }
 
@@ -52,4 +49,8 @@ export const AuthProvider = ({ children }: AuthPropsType) => {
   );
 };
 
-export default AuthContext;
+export function useAuth(){
+  const context = useContext(AuthContext);
+ 
+  return context;
+ }

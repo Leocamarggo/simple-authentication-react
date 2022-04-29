@@ -1,15 +1,13 @@
-import Home from '../pages/home';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { useAuth } from '../contexts/auth';
+import { Navigate } from 'react-router-dom';
 
-const PrivateRoutes = () => {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/home" element={<Home />} />
-        <Route path="*" element={<Navigate to="/home" replace />} />
-      </Routes>
-    </BrowserRouter>
-  );
+type PrivateRoutesPropsType = {
+  children: JSX.Element
+}
+
+const PrivateRoutes = ({children}: PrivateRoutesPropsType) => {
+	const {signed} = useAuth();
+	return signed ? children : <Navigate to='/' />;
 };
 
 export default PrivateRoutes;
