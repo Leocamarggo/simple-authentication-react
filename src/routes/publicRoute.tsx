@@ -1,11 +1,8 @@
 import { useAuth } from '../contexts/auth';
 import { Navigate } from 'react-router-dom';
+import { ChildrenPropsType } from '../interface/children';
 
-type RoutesPropsType = {
-  children: JSX.Element
-}
-
-const PublicRoutes = ({children}: RoutesPropsType) => {
+const PublicRoutes = ({children}: ChildrenPropsType) => {
 	const {signed} = useAuth();
 	return signed ? <Navigate to='/home' /> : children;
 };

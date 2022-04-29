@@ -14,11 +14,7 @@ const Login = () => {
 		}
 	};
 
-  return (
-    <div>
-      <button onClick={handleSubmit}>Login</button>
-    </div>
-  );
+  return <button onClick={handleSubmit}>Login</button>
 };
 
 export default Login;

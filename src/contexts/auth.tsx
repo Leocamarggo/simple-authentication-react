@@ -1,27 +1,17 @@
 import {api} from '../services/api';
+import { IAuthContext } from '../interface/auth';
+import { ChildrenPropsType } from '../interface/children';
 import { createContext, useState, useEffect, useContext } from 'react';
-
-type AuthPropsType = {
-  children: JSX.Element
-}
-interface AuthContextData {
-  Logout(): Promise<void>;
-  signed: boolean;
-  user: string | null;
-  Login(user: object): Promise<void>;
- }
  
-const AuthContext = createContext<AuthContextData>({} as AuthContextData);
+const AuthContext = createContext<IAuthContext>({} as IAuthContext);
 
-export const AuthProvider = ({ children }: AuthPropsType) => {
+export const AuthProvider = ({ children }: ChildrenPropsType) => {
   const [user, setUser] = useState<string | null>(null);
 
   useEffect(() => {
     const storagedToken = localStorage.getItem('@App:token');
 
-    if (storagedToken) {
-      setUser(JSON.parse(storagedToken));
-    }
+    storagedToken && setUser(JSON.parse(storagedToken));
   }, []);
   
   async function Login(userData: object) {
