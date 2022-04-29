@@ -1,7 +1,7 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from '../pages/home';
 import Login from '../pages/login';
-import {PrivateRoutes, PublicRoutes} from './privateRoutes';
+import {PrivateRoutes, PublicRoutes} from './typesRoutes';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 const Routers = () => (
   <BrowserRouter>
