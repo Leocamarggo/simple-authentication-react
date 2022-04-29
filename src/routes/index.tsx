@@ -1,8 +1,8 @@
-import Home from '../pages/home';
-import Login from '../pages/login';
-import PublicRoute from './publicRoute';
-import PrivateRoute from './privateRoute';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from '../pages/home'
+import Login from '../pages/login'
+import PublicRoute from './publicRoute'
+import PrivateRoute from './privateRoute'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 const Routers = () => (
   <BrowserRouter>
@@ -25,6 +25,6 @@ const Routers = () => (
       />
     </Routes>
   </BrowserRouter>
-);
+)
 
-export default Routers;
+export default Routers
