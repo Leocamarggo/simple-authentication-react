@@ -1,13 +1,11 @@
-import {useContext, FC} from 'react';
-import AuthContext from '../../contexts/auth';
+import { useAuth } from '../../hooks/useAuth';
 
-const Login: FC = () => {
-  const context = useContext(AuthContext);
-  function handleLogin() {context.Login()}
+const Login = () => {
+  const { Login } = useAuth()
 
   return (
     <div>
-      <button onClick={handleLogin}>Login</button>
+      <button onClick={Login}>Login</button>
     </div>
   );
 };
