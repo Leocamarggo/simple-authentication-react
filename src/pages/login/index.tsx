@@ -2,12 +2,12 @@ import { useAuth } from '../../contexts/auth';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  const { Login } = useAuth()
+  const { login } = useAuth()
   const navigate = useNavigate();
   
   const handleSubmit = async () => {
 		try {
-			await Login({ email: "eve.holt@reqres.in", password: "cityslicka" });
+			await login({ email: "eve.holt@reqres.in", password: "cityslicka" });
 			navigate('/home');
 		} catch (error) {
 			alert('Error')

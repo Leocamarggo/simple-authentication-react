@@ -1,12 +1,12 @@
 import { useAuth } from '../../contexts/auth';
 
 const Home = () => {
-  const { Logout } = useAuth();
+  const { logout } = useAuth();
 
   return (
     <>
       <h1>Home</h1>
-      <button onClick={Logout}>Logout</button>
+      <button onClick={logout}>Logout</button>
     </>
   );
  };

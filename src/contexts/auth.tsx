@@ -11,27 +11,27 @@ export const AuthProvider = ({ children }: ChildrenPropsType) => {
   useEffect(() => {
     const storagedToken = localStorage.getItem('@App:token');
 
-    storagedToken && setUser(JSON.parse(storagedToken));
+    storagedToken && setUser(storagedToken);
   }, []);
   
-  async function Login(userData: IUserData) {
+  async function login(userData: IUserData) {
     try {
-      const response = await api.post('/login', userData);
-      
-      setUser(JSON.stringify(response.data.token));
-      localStorage.setItem('@App:token', JSON.stringify(response.data.token));
+      const response = await api.post('/Login', userData);
+
+      setUser(response.data.token);
+      localStorage.setItem('@App:token', response.data.token);
     } catch (error){
       setUser(null);
     }
   }
 
-  async function Logout() {
+  async function logout() {
     setUser(null);
     localStorage.removeItem('@App:token');
   }
 
   return (
-    <AuthContext.Provider value={{ signed: Boolean(user), user,  Login, Logout }}>
+    <AuthContext.Provider value={{ signed: Boolean(user), user,  login, logout }}>
       {children}
     </AuthContext.Provider>
   );
