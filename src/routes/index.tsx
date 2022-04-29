@@ -1,23 +1,24 @@
 import Home from '../pages/home';
 import Login from '../pages/login';
-import {PrivateRoutes, PublicRoutes} from './typesRoutes';
+import PrivateRoute from './privateRoute';
+import PublicRoute from './publicRoute';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 const Routers = () => (
   <BrowserRouter>
     <Routes>
       <Route path="/" element={  
-          <PublicRoutes>
+          <PublicRoute>
             <Login />
-          </PublicRoutes>
+          </PublicRoute>
         } 
       />
       <Route 
         path="/home" 
         element={
-          <PrivateRoutes>
+          <PrivateRoute>
             <Home />
-          </PrivateRoutes>
+          </PrivateRoute>
         } 
       />
     </Routes>
