@@ -1,15 +1,15 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from '../pages/home';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
-const PrivateRoutes: React.FC = () => {
- return (
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<Home />} />
-    </Routes>
-  </BrowserRouter>
- );
+const PrivateRoutes = () => {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/home" element={<Home />} />
+        <Route path="*" element={<Navigate to="/home" replace />} />
+      </Routes>
+    </BrowserRouter>
+  );
 };
 
 export default PrivateRoutes;
