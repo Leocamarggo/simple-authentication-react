@@ -28,11 +28,15 @@ export const AuthProvider = ({ children }: AuthPropsType) => {
   }, []);
   
   async function Login(userData: object) {
-    const response = await api.post('/login', userData);
-    setUser({teste: response.data.id});
+    try {
+      const response = await api.post('/login', userData);
+      setUser({teste: response.data.token});
 
-    localStorage.setItem('@App:user', response.data.token);
-    localStorage.setItem('@App:token', response.data.token);
+      localStorage.setItem('@App:user', response.data.token);
+      localStorage.setItem('@App:token', response.data.token);
+    } catch (error){
+      setUser(null);
+    }
   }
 
   function Logout() {

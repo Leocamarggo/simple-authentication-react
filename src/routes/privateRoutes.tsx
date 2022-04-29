@@ -5,9 +5,13 @@ type PrivateRoutesPropsType = {
   children: JSX.Element
 }
 
-const PrivateRoutes = ({children}: PrivateRoutesPropsType) => {
+
+export const PrivateRoutes = ({children}: PrivateRoutesPropsType) => {
 	const {signed} = useAuth();
 	return signed ? children : <Navigate to='/' />;
 };
 
-export default PrivateRoutes;
+export const PublicRoutes = ({children}: PrivateRoutesPropsType) => {
+	const {signed} = useAuth();
+	return signed ? <Navigate to='/home' /> : children;
+};
