@@ -20,15 +20,15 @@ export const AuthProvider = ({ children }: AuthPropsType) => {
     const storagedToken = localStorage.getItem('@App:token');
 
     if (storagedToken) {
-      setUser(storagedToken);
+      setUser(JSON.parse(storagedToken));
     }
   }, []);
   
   async function Login(userData: object) {
     try {
       const response = await api.post('/login', userData);
-      setUser(response.data.token);
-      localStorage.setItem('@App:token', response.data.token);
+      setUser(JSON.stringify(response.data.token));
+      localStorage.setItem('@App:token', JSON.stringify(response.data.token));
     } catch (error){
       setUser(null);
     }
