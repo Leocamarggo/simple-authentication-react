@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-const api = axios.create({
- baseURL: 'https://reqres.in/api/login',
+export const api = axios.create({
+ baseURL: process.env.REACT_APP_BASE_URL_AUTH,
 });
-
-export default api;
