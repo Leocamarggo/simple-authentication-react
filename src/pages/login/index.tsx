@@ -18,15 +18,22 @@ const Login = () => {
   return (
 		<S.Box>
 			<S.Container>
-				<h1>LOGIN</h1>
-
 				<S.Label htmlFor='email'>E-MAIL</S.Label>
-				<S.Input id='email' required type='email' />
+				<S.Input
+					id='email'
+					autoComplete='off'
+					required 
+					type='text'
+				/>
 
 				<S.Label htmlFor='password'>SENHA</S.Label>
-				<S.Input id='password' required type='password' />
-
-				<S.Button onClick={handleSubmit}>Login</S.Button>
+				<S.Input
+					id='password'
+					autoComplete='off'
+					required
+					type='password'
+				/>
+				<S.Button onClick={handleSubmit}>ENTRAR</S.Button>
 			</S.Container>
 		</S.Box>
 	)

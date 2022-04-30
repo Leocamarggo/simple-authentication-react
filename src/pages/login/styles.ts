@@ -12,7 +12,7 @@ export const Box = styled.div`
 export const Container = styled.div`
   ${({ theme }) => css`
     width: 30rem;
-    height: 25rem;
+    height: 30rem;
     display: flex;
     flex-direction: column;
     padding: ${theme.spacings.medium};
@@ -23,7 +23,7 @@ export const Label = styled.label`
   ${({ theme }) => css`
     font-weight: 600;
     letter-spacing: 0.1rem;
-    margin-bottom: -0.5rem;
+    margin-bottom: 0.3rem;
     transition: all 0.8s ease 0s;
     color: ${theme.colors.white};
     font-size: ${theme.font.sizes.xxsmall};
@@ -35,13 +35,13 @@ export const Input = styled.input`
   ${({ theme }) => css`
     outline: 0;
     height: 3.5rem;
-    margin: 0.8em 0;
+    margin-bottom: 1.5rem;
     border-radius: 0.3rem;
     color: ${theme.colors.blue};
     transition: all 0.8s ease 0s;
     background: ${theme.colors.dark};
     padding: ${theme.spacings.xsmall};
-    box-shadow: rgb(0 0 0 / 50%) 0 0 1rem;
+    box-shadow: rgb(0 0 0 / 30%) 0 0 1rem;
     border: 0.1rem solid ${theme.colors.dark};
     &:focus{
       border-color: ${theme.colors.blue} !important;
@@ -52,4 +52,18 @@ export const Input = styled.input`
   `}
 `
 
-export const Button = styled.button``
+export const Button = styled.button`
+  ${({ theme }) => css`
+    border: none;
+    height: 3rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    border-radius: 0.3rem;
+    letter-spacing: 0.1rem;
+    color: ${theme.colors.white};
+    font-weight: ${theme.font.semibold};
+    box-shadow: rgb(0 0 0 / 30%) 0 0 1rem;
+    font-size: ${theme.font.sizes.xxsmall};
+    background-color: ${theme.colors.blue};
+  `}
+`
