@@ -7,6 +7,9 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-family: 'Radio Canada', sans-serif;
   }
+  body {
+    background-color: #858585;
+  }
 `
 
 export default GlobalStyle

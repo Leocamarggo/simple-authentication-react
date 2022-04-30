@@ -1,13 +1,10 @@
 import styled, { css } from 'styled-components'
 
 export const Box = styled.div`
-  ${({ theme }) => css`
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: ${theme.colors.silver};
-  `}
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 export const Container = styled.div`
   ${({ theme }) => css`
