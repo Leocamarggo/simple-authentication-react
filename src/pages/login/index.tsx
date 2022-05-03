@@ -7,7 +7,7 @@ import { IUserData } from '../../interface/auth'
 const Login = () => {
   const { login } = useAuth()
   const navigate = useNavigate()
-	const [ loginData, setLoginData ] = useState<IUserData>({email: '', password: ''})
+	const [ loginData, setLoginData ] = useState<IUserData>({email: 'eve.holt@reqres.in', password: 'cityslicka'})
   
   const handleSubmit = async () => {
 		try {
@@ -35,6 +35,7 @@ const Login = () => {
 					autoComplete='off'
 					required 
 					type='text'
+					defaultValue={loginData.email}
 					onChange={(e)=> updateData('email', e)}
 				/>
 
@@ -44,6 +45,7 @@ const Login = () => {
 					autoComplete='off'
 					required
 					type='password'
+					defaultValue={loginData.password}
 					onChange={(e)=> updateData('password', e)}
 				/>
 				<S.Button onClick={handleSubmit}>ENTRAR</S.Button>
